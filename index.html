@@ -23,39 +23,44 @@
       }`)'>CONNECT</button>
 
       <button onclick='sendQuick(`{
+        \"type\":\"KEEP_ALIVE\",
+        \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\"
+      }`)'>KEEP_ALIVE</button>
+      
+      <button onclick='sendQuick(`{
         \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
         \"type\":\"REQUEST\",
         \"createdAt\":1749658438999,
-        \"body\":\"{\\\"type\\\":42,\\\"data\\\":{\\\"pairedDevices\\\":[\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\"]}}\" 
+        \"body\":\"{\\\"type\\\":42,\\\"data\\\":{\\\"pairedDevices\\\":[\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\"]}}\" 
       }`)'>REQUEST (pairedDevices)</button>
     </div>
 
     <button onclick='sendQuick(`{
-      \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
+      \"jwt\":\"\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660165852,
-      \"body\": \"{\\\"destination\\\":\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000000}}\"
+      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000000}}\"
     }`)'>🔒 Lock HW Device</button>
 
     <button onclick='sendQuick(`{
       \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660186071,
-      \"body\": \"{\\\"destination\\\":\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000001}}\"
+      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000001}}\"
     }`)'>🔓 Unlock</button>
 
     <button onclick='sendQuick(`{
       \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660231367,
-      \"body\": \"{\\\"destination\\\":\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"dA==\\\"}}\"
+      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"dA==\\\"}}\"
     }`)'>📶 Signal On</button>
 
     <button onclick='sendQuick(`{
       \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTY1ODM3MywiZXhwIjoxNzUyMjUwMzczfQ.iPMQ4XNhVJCPK1nrqczkftfHiu7Cg3s3yC-ihPQzSxJrVet8LKFF95DrFZFsHOXw1q-pVtjfPwTfCzAOg_EiminZiKuYY2a5iV_V8GZ1nQDhZ4n8hWbF4saLrQnLxRFopx_voUTSDFJfdbQNQCIftQPA2k8Mz2dFt2RzwOSfT5wc-gyCwoObFAd5a3F2rrJmH_tlfVp894_JX8QhySGooBHO-x_nGo6ZbIbG3eW1HVdfrlYff2x14m4-pUJOBm0HTp2KnaH_yvCX2j0bg1i5TOIScO8Oc9WfpU5ovGoHT74DHvr_ihDdygwy04ZvOruxcWfHKgcjzaTEOtMhNlbLMA\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660240142,
-      \"body\": \"{\\\"destination\\\":\\\"A2657489-F926-44D5-914C-C3984B788FF5\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"Zg==\\\"}}\"
+      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"Zg==\\\"}}\"
     }`)'>🚫 Signal Off</button>
 
 
