@@ -22,7 +22,7 @@
 
     <div class="quick-buttons">
       <strong>New Value of:</strong><br/>
-      <!-- <input id="wsUrlInput" type="text" placeholder="Enter WebSocket URL" style="width: 100%; margin: 4px 0;" /> -->
+      <input id="wsUrlInput" type="text" placeholder="Enter WebSocket URL wss://url" style="width: 100%; margin: 4px 0;" />
       <input id="jwtInput" type="text" placeholder="Enter JWT Token" style="width: 100%; margin: 4px 0;" />
       <input id="destinationInput" type="text" placeholder="Enter Destination" style="width: 100%; margin: 4px 0;" />
       <strong>Quick Requests:</strong><br/>
@@ -79,6 +79,7 @@
 
     <script>
       let ws;
+      let wsUrl = "wss://web-sdk-dev.twi-cloud-services.com/connect"
       let jwt = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJsZXZlbCI6MywidXNlcklkIjoiYmVmMTJlOWI0YTg0OGQwYTEzOTdhMWUxIiwiYmxlIjoiQjA4Qzc1QkIzOUE4IiwiYWdlVmVyaWZpZWQiOnRydWUsImlhdCI6MTc0OTc0NzMzMCwiZXhwIjoxNzUyMzM5MzMwfQ.MJiqelFOrwzSCOyBXphHi1j9k7wOtvrjfqP8_ls6DaMmz9eFRFj40D8OejagL3WzBsmyKX7_piTDI67UA9Lr6rU36lo4dlvsiX5FqkL9xr8vA-TS58hd9hrVzJteab_kixTvQZwR_lc4QCxQCenGWe_BZsh3-efV2df6qQ1qtDxuKhOMFbHA8JjZTVaK3sIG5dTcn5qD4S3UOR4PY29SLi4pIXU0MFXlrZua69JHJTUpCBBQredp4reYtzah4_zHqmx5y3MzLl351BnOdVYfHNbybImbPI1rA-izQp6T8LSbqTBJ5Fy-3L5uKnlWOvrow0HgUQvzAqTvkCuBAsogpA";
       let destination = "E891BF57-4139-494C-8F8F-930B6BAE59F2";
       const logDiv = document.getElementById("log");
@@ -190,20 +191,21 @@
         try {
           ws.close();
         } catch {}
-        connect();
+        connect(wsUrl);
       }
       function initWebSocket() {
         const jwtInput = document.getElementById("jwtInput").value.trim();
         const destInput = document.getElementById("destinationInput").value.trim();
-        // const wsUrlInput = document.getElementById("wsUrlInput").value.trim();
+        const wsUrlInput = document.getElementById("wsUrlInput").value.trim();
 
         if (jwtInput) jwt = jwtInput;
         if (destInput) destination = destInput;
+        if (wsUrlInput) wsUrl = wsUrlInput;
+        connect(wsUrl);
 
       }
 
-
-      connect();
+      connect(wsUrl);
     </script>
   </body>
 </html>
